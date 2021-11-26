@@ -1,22 +1,24 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-<center>
-    <h1>Welcome to Public Chatting</h1>
-    <p>Remove frustration here</p>
+{% extends "base.html" %}
+{% block title %} Index Page {% endblock %}
+{% block body %}
+    <center>
+        <h1>Welcome to Public Chatting</h1>
+        <p>Remove frustration here</p>
 
-    <a href="{% url "redirect_into_lobby" %}">Go to Lobby</a>
-</center>
-<script>
-    let user_name = prompt("Enter your Name ?");
-    localStorage.setItem("public_username", user_name)
-</script>
-</body>
-</html>
+        <a href="{% url "redirect_into_lobby" %}">Go to Lobby</a>
+    </center>
+    <script>
+
+        const prompt_box = () => prompt("Enter your Name ?")
+        let user_name = "";
+        while (true) {
+            if (user_name === null || user_name === "") {
+                user_name = prompt_box()
+            } else {
+                localStorage.setItem("public_username", user_name);
+                break;
+            }
+        }
+
+    </script>
+{% endblock body %}
