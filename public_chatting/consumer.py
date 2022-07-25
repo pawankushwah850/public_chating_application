@@ -1,7 +1,7 @@
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 from datetime import datetime
-
+import time
 
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
@@ -45,6 +45,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
         # Send message to WebSocket
         await self.send(text_data=json.dumps({
             'message': message,
-            "time": datetime.now().strftime("%T"),
+            "time": str(datetime.now()),
             "name": name
         }))
